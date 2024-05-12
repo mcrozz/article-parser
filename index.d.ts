@@ -46,29 +46,7 @@ export interface ProxyConfig {
   headers?: Record<string, string>;
 }
 
-export interface FetchOptions {
-  /**
-   * list of request headers
-   * default: null
-   */
-  headers?: Record<string, string>;
-  /**
-   * the values to configure proxy
-   * default: null
-   */
-  proxy?: ProxyConfig;
-
-  /**
-   * http proxy agent
-   * default: null
-   */
-  agent?: object;
-  /**
-   * signal to terminate request
-   * default: null
-   */
-  signal?: object;
-}
+export type FetchOptions = ProxyFetchOptions | RequestInit
 
 export interface ArticleData {
   url?: string;

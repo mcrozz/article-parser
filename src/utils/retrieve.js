@@ -16,16 +16,8 @@ const profetch = async (url, options = {}) => {
 }
 
 export default async (url, options = {}) => {
-  const {
-    headers = {
-      'user-agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0',
-    },
-    proxy = null,
-    agent = null,
-    signal = null,
-  } = options
-
-  const res = proxy ? await profetch(url, { proxy, signal }) : await fetch(url, { headers, agent, signal })
+  const { proxy } = options
+  const res = proxy ? await profetch(url, { proxy, signal: options.signal }) : await fetch(url, options)
 
   const status = res.status
   if (status >= 400) {
